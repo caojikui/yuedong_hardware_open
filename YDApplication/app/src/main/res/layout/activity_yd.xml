@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <Button
+        android:id="@+id/btn_activity_my_open"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="开启SDk应用的界面"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/holo_green_dark"/>
+
+    <Button
+        android:id="@+id/btn_activity_my_awake"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="唤醒插件"
+        android:background="@android:color/holo_green_dark"
+        android:layout_marginTop="5dp"/>
+    <Button
+        android:id="@+id/btn_activity_my_keep_alive"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="长连接"
+        android:background="@android:color/holo_green_dark"
+        android:layout_marginTop="5dp"/>
+    <Button
+        android:id="@+id/btn_blue_opend"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="蓝牙状态打开"
+        android:background="@android:color/holo_green_dark"
+        android:layout_marginTop="5dp"/>
+    <Button
+        android:id="@+id/btn_blue_closed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="蓝牙状态关闭"
+        android:background="@android:color/holo_green_dark"
+        android:layout_marginTop="5dp"/>
+    <Button
+        android:id="@+id/btn_activity_my_close_blue_tooth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="关闭蓝牙"
+        android:background="@android:color/holo_green_dark"
+        android:layout_marginTop="5dp"/>
+
+
+</LinearLayout>

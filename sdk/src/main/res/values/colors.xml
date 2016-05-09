@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="oh_sdk_white_50">#80ffffff</color>
+    <color name="oh_sdk_white">#FFffffff</color>
+    <color name="oh_sdk_nav_bn_pressed">#33FFFFFF</color>
+</resources>

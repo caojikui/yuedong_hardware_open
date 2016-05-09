@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="id" name="oh_sdk_bn_nav_left" />
+    <item type="id" name="oh_sdk_bn_nav_right" />
+    <item type="id" name="oh_sdk_label_nva_title" />
+    <item type="id" name="oh_sdk_navigation" />
+</resources>

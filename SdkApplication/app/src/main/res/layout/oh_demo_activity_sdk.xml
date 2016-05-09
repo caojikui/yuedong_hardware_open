@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.yuedong.open.hardware.ui.NavigationBar
+        android:layout_width="match_parent"
+        android:id="@id/oh_sdk_navigation"
+        android:layout_height="@dimen/oh_sdk_nav_height"/>
+    <Button
+        android:id="@+id/btn_activity_sdk_bind"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="设备绑定"
+        android:background="@android:color/holo_green_dark"/>
+    <Button
+        android:id="@+id/btn_activity_sdk_unbind"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="解绑设备"
+        android:background="@android:color/holo_green_dark"/>
+    <Button
+        android:id="@+id/btn_activity_sdk_register_awake"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="注册唤醒服务"
+        android:background="@android:color/holo_green_dark"
+        android:layout_marginTop="5dp"/>
+    <Button
+        android:id="@+id/btn_activity_sdk_register_keep_alive"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="注册长连接服务"
+        android:background="@android:color/holo_green_dark"
+        android:layout_marginTop="5dp"/>
+    <Button
+        android:id="@+id/btn_activity_sdk_register_close_blue_tooth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="注册关闭蓝牙服务"
+        android:background="@android:color/holo_green_dark"
+        android:layout_marginTop="5dp"/>
+    <Button
+        android:id="@+id/btn_activity_sdk_write_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="写入数据"
+        android:background="@android:color/holo_green_dark"
+        android:layout_marginTop="5dp"/>
+    <Button
+        android:id="@+id/btn_activity_sdk_read_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="读取数据"
+        android:background="@android:color/holo_green_dark"
+        android:layout_marginTop="5dp"/>
+    <Button
+        android:id="@+id/oh_demo_bn_user_info"
+        android:layout_width="match_parent"
+        android:text="获取用户数据"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/holo_green_dark"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

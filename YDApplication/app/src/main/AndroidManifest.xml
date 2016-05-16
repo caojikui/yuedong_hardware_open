@@ -17,7 +17,7 @@
         </activity>
 
         <provider
-            android:authorities="com.yuedong.sport.open.hardware"
+            android:authorities="com.yuedong.sport.yue.open.hardware"
             android:name="com.yuedong.ydapplication.provider.HardWareProvider"
             android:exported="true"/>
         <service android:name="com.yuedong.yue.open.hardware.YDHardwarePlugService"

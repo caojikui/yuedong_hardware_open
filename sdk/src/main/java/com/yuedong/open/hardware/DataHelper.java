@@ -49,7 +49,7 @@ public class DataHelper {
         ContentResolver resolver = context.getContentResolver();
         ContentValues values = new ContentValues();
         values.put(PlugConst.kColDeviceIdentify, deviceIdentify);
-        values.put(PlugConst.kColStepCount, sleepSection);
+        values.put(PlugConst.kColSleepSection, sleepSection);
         values.put(PlugConst.kColStartTSec, startTSec);
         values.put(PlugConst.kColEndTSec, endTSec);
         resolver.insert(kUriSleep, values);

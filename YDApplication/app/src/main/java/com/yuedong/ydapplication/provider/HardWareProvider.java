@@ -8,6 +8,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
 import com.yuedong.open.hardware.PlugConst;
 
@@ -117,34 +118,39 @@ public class HardWareProvider extends ContentProvider {
         db = dbLiteHelper.getWritableDatabase();
         long rowId;
         Uri noteUri = null;
-        if (sMatcher.match(uri) == STEP_TABLE_ITEM){
-            rowId = db.insert(PlugConst.kTableSteps,"",values);
-            if(rowId>0){
-                noteUri= ContentUris.withAppendedId(PlugConst.STEP_CALCULATION_URI, rowId);
-                getContext().getContentResolver().notifyChange(noteUri, null);
-                return noteUri;
+        try {
+            if (sMatcher.match(uri) == STEP_TABLE_ITEM) {
+                rowId = db.insertOrThrow(PlugConst.kTableSteps, null, values);
+                if (rowId > 0) {
+                    noteUri = ContentUris.withAppendedId(PlugConst.STEP_CALCULATION_URI, rowId);
+                    getContext().getContentResolver().notifyChange(noteUri, null);
+                    return noteUri;
+                }
+            } else if (sMatcher.match(uri) == SLEEP_TABLE_ITEM) {
+                rowId = db.insertOrThrow(PlugConst.kTableSleep, null, values);
+                if (rowId > 0) {
+                    noteUri = ContentUris.withAppendedId(PlugConst.SLEEP_URI, rowId);
+                    getContext().getContentResolver().notifyChange(noteUri, null);
+                    return noteUri;
+                }
+            } else if (sMatcher.match(uri) == HEART_RATE_TABLE_ITEM) {
+                rowId = db.insertOrThrow(PlugConst.kTableHeartRate, null, values);
+                if (rowId > 0) {
+                    noteUri = ContentUris.withAppendedId(PlugConst.HEART_RATE_URI, rowId);
+                    getContext().getContentResolver().notifyChange(noteUri, null);
+                    return noteUri;
+                }
+            } else if (sMatcher.match(uri) == INTELLIGENT_SCALE_TABLE_ITEM) {
+                rowId = db.insertOrThrow(PlugConst.kTableIntelligentScale, null, values);
+                if (rowId > 0) {
+                    noteUri = ContentUris.withAppendedId(PlugConst.INTELLIGENT_SCALE_URI, rowId);
+                    getContext().getContentResolver().notifyChange(noteUri, null);
+                    return noteUri;
+                }
             }
-        }else if(sMatcher.match(uri) == SLEEP_TABLE_ITEM){
-            rowId = db.insert(PlugConst.kTableSleep,"",values);
-            if(rowId>0){
-                noteUri= ContentUris.withAppendedId(PlugConst.SLEEP_URI, rowId);
-                getContext().getContentResolver().notifyChange(noteUri, null);
-                return noteUri;
-            }
-        }else if (sMatcher.match(uri) == HEART_RATE_TABLE_ITEM){
-            rowId = db.insert(PlugConst.kTableHeartRate,"",values);
-            if(rowId>0){
-                noteUri= ContentUris.withAppendedId(PlugConst.HEART_RATE_URI, rowId);
-                getContext().getContentResolver().notifyChange(noteUri, null);
-                return noteUri;
-            }
-        }else if(sMatcher.match(uri) == INTELLIGENT_SCALE_TABLE_ITEM){
-            rowId = db.insert(PlugConst.kTableIntelligentScale,"",values);
-            if(rowId>0){
-                noteUri= ContentUris.withAppendedId(PlugConst.INTELLIGENT_SCALE_URI, rowId);
-                getContext().getContentResolver().notifyChange(noteUri, null);
-                return noteUri;
-            }
+        } catch (Throwable t) {
+            t.printStackTrace();
+            Log.e("hardware_open", t.getLocalizedMessage());
         }
         throw new IllegalArgumentException("Unknown URI"+uri);
     }

@@ -102,7 +102,7 @@ public class DataHelper {
         public int calorie = 0;
     }
 
-    public StepCountSum dayTotalStepCount(String deviceIdentify, long beginTSec, long endTSec) {
+    public StepCountSum getStepCountSum(String deviceIdentify, long beginTSec, long endTSec) {
         ContentResolver resolver = context.getContentResolver();
         String selection = PlugConst.kColStartTSec + ">=" + beginTSec
                 + " and " + PlugConst.kColEndTSec + "<" + endTSec

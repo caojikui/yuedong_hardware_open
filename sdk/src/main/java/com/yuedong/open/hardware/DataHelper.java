@@ -28,7 +28,7 @@ public class DataHelper {
     private Context context;
 
     private DataHelper(Context context) {
-        this.context = context;
+        this.context = context.getApplicationContext();
     }
 
     public static DataHelper getsInstance(Context context) {

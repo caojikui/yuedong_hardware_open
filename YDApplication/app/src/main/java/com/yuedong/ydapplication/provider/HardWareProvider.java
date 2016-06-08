@@ -151,6 +151,7 @@ public class HardWareProvider extends ContentProvider {
         } catch (Throwable t) {
             t.printStackTrace();
             Log.e("hardware_open", t.getLocalizedMessage());
+            throw t;
         }
         throw new IllegalArgumentException("Unknown URI"+uri);
     }

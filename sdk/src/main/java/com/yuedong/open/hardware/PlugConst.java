@@ -32,8 +32,7 @@ public class PlugConst {
 
     //    执行绑定操作等对应的Service
     public static final String kPlugServiceName = "com.yuedong.yue.open.hardware.YDHardwarePlugService";
-
-//    测试使用
+    //  TODO 只有测试demo使用该值
     public static final String kPlugServicePkg = "com.yuedong.open.hardware";
 
     //    contentProvider对应数据表
@@ -45,6 +44,8 @@ public class PlugConst {
     public static final String kTableHeartRate = "heart_rate_table_name";
     //    智能体重称
     public static final String kTableIntelligentScale = "intelligent_scale_table_name";
+    //    实时步数 使用update, 即设置当天实时, query 查讯最后一次设置的, 如果不是同一天或没有数据 则cursor没有数据返回 即cursor.getCount() = 0
+    public static final String kTableRealTimeStep = "real_time_step_table";
 
     //    每个table对应cols
     public static final String kColId = "_id";       //
@@ -55,7 +56,9 @@ public class PlugConst {
     public static final String kColCalorie = "calorie";         // int 小卡
     public static final String kColStartTSec = "start_time_sec";    //long
     public static final String kColEndTSec = "end_time_sec";        //long
-    public static final String kColSleepSection = "sleep_section";  //int 睡眠阶段 1234 分别对应非快眼动睡眠的四个阶段 5 对应快眼动睡眠，0对应清醒
+    public static final String kColSleepSection = "sleep_section";
+    //int 睡眠阶段 1234 分别对应非快眼动睡眠的四个阶段 5 对应快眼动睡眠，0对应清醒
+    //I、II期称“浅睡眠”，III、IV期称为“深睡眠
     public static final String kColHeartRate = "heart_rate";    //心率 每分钟 int
     public static final String kColTimeSec = "time_sec";        // long
     public static final String kColWeightG = "weight_g";        // int
@@ -69,6 +72,9 @@ public class PlugConst {
     计步
     kColId,kColDeviceIdentify,kColStepCount,kColStartTSec,kColEndTSec,kColDistanceM, kColCalorie
 
+    实时步数
+    kColDeviceIdentify, kColStepCount, kColDistanceM, kColCalorie
+
     睡眠部分
     kColId,kColDeviceIdentify,kColStartTSec,kColEndTSec, kColSleepSection
 
@@ -79,6 +85,7 @@ public class PlugConst {
     kColId,kColDeviceIdentify,kColTimeSec, kColWeightG,
     kColBodyFatPercentage, kColBodyMusclePercentage, kColBodyMassIndex
     kColBasalMetabolismRate,kColBodyWaterPercentage, kColExtra
+
      */
 
     //    contentProvider相关

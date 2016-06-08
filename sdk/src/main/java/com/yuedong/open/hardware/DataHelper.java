@@ -22,6 +22,7 @@ public class DataHelper {
     public static final Uri kUriSleep = Uri.parse("content://" + PlugConst.AUTOHORITY + "/"+ PlugConst.kTableSleep);
     public static final Uri kUriHeartRate = Uri.parse("content://" + PlugConst.AUTOHORITY + "/"+ PlugConst.kTableHeartRate);
     public static final Uri kUriIntelligentScale = Uri.parse("content://" + PlugConst.AUTOHORITY + "/"+ PlugConst.kTableIntelligentScale);
+    public static final Uri kUriRealTimeStep = Uri.parse("content://" + PlugConst.AUTOHORITY + "/"+ PlugConst.kTableRealTimeStep);
 
     private static DataHelper sInstance;
 
@@ -31,7 +32,7 @@ public class DataHelper {
         this.context = context.getApplicationContext();
     }
 
-    public static DataHelper getsInstance(Context context) {
+    public static DataHelper getInstance(Context context) {
         if (sInstance == null) {
             sInstance = new DataHelper(context);
         }
@@ -96,19 +97,19 @@ public class DataHelper {
         return (millis + offset) / kDayMillis * kDayMillis - offset;
     }
 
-    public static class StepCountSum {
+    public static class StepCountInfo {
         public int stepCount = 0;
         public float disM = 0;
         public int calorie = 0;
     }
 
-    public StepCountSum getStepCountSum(String deviceIdentify, long beginTSec, long endTSec) {
+    public StepCountInfo getStepCountSum(String deviceIdentify, long beginTSec, long endTSec) {
         ContentResolver resolver = context.getContentResolver();
         String selection = PlugConst.kColStartTSec + ">=" + beginTSec
                 + " and " + PlugConst.kColEndTSec + "<" + endTSec
                 + " and " + PlugConst.kColDeviceIdentify + "=\"" + deviceIdentify + '\"';
         Cursor cursor = resolver.query(kUriStep, null, selection, null, null);
-        StepCountSum sum = new StepCountSum();
+        StepCountInfo sum = new StepCountInfo();
         if(cursor.moveToFirst()) {
             int indexStep = cursor.getColumnIndex(PlugConst.kColStepCount);
             int indexCalorie = cursor.getColumnIndex(PlugConst.kColCalorie);
@@ -155,5 +156,34 @@ public class DataHelper {
             e.printStackTrace();
         }
         sp.edit().putString(key, jsonObject.toString()).commit();
+    }
+
+    public void setRealTimeStepCount(String deviceIdentify, int stepCount, float disM, int calorie) {
+        ContentValues values = new ContentValues();
+        values.put(PlugConst.kColDeviceIdentify, deviceIdentify);
+        values.put(PlugConst.kColStepCount, stepCount);
+        values.put(PlugConst.kColDistanceM, disM);
+        values.put(PlugConst.kColCalorie, calorie);
+        ContentResolver resolver = context.getContentResolver();
+        resolver.update(kUriRealTimeStep, values, null, null);
+    }
+
+    private static final String kSelectionDeviceIdentify = PlugConst.kColDeviceIdentify + "=";
+    public StepCountInfo getRealTimeStepCount(String deviceIdentify) {
+        ContentResolver resolver = context.getContentResolver();
+        Cursor cursor = resolver.query(kUriRealTimeStep, null, kSelectionDeviceIdentify, new String[]{deviceIdentify}, null);
+        StepCountInfo stepCountInfo = new StepCountInfo();
+        if(cursor == null) {
+            return stepCountInfo;
+        }
+        if(!cursor.moveToFirst()) {
+            cursor.close();
+            return stepCountInfo;
+        }
+        stepCountInfo.stepCount = cursor.getInt(cursor.getColumnIndex(PlugConst.kColStepCount));
+        stepCountInfo.disM = cursor.getInt(cursor.getColumnIndex(PlugConst.kColDistanceM));
+        stepCountInfo.calorie = cursor.getInt(cursor.getColumnIndex(PlugConst.kColCalorie));
+        cursor.close();
+        return stepCountInfo;
     }
 }

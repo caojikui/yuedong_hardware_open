@@ -264,6 +264,7 @@ public class SDkActivity extends Activity implements View.OnClickListener {
             Toast.makeText(this, sb.toString(),Toast.LENGTH_SHORT).show();
         }
         cursor.close();
+        DataHelper.getInstance(this).getRealTimeStepCount(Const.deviceIdentify);
     }
 
     private void writeData() {
@@ -272,9 +273,11 @@ public class SDkActivity extends Activity implements View.OnClickListener {
             return;
         }
         JSONObject extra = new JSONObject();
-        DataHelper.getsInstance(this).writeIntelligentScaleData(Const.deviceIdentify, System.currentTimeMillis()/1000, 60, 20, 20, 20, 140, 70, extra);
+        DataHelper.getInstance(this).writeIntelligentScaleData(Const.deviceIdentify, System.currentTimeMillis()/1000, 60, 20, 20, 20, 140, 70, extra);
 
-        DataHelper.getsInstance(this).writeSleepData(Const.deviceIdentify, 1, System.currentTimeMillis(), System.currentTimeMillis());
+        DataHelper.getInstance(this).writeSleepData(Const.deviceIdentify, 1, System.currentTimeMillis(), System.currentTimeMillis());
+
+        DataHelper.getInstance(this).setRealTimeStepCount(Const.deviceIdentify, 100, 100, 100);
     }
 
     @Override

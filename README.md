@@ -9,3 +9,5 @@ demo 是两个程序 一个模拟悦动圈,一个模拟插件
 
 当使用YDApplication, SdkApplication调试通过之后, 需要使用插件化打包方式打包,请参照文档 插件打包文档 打包完成后联系悦动开发人员进行测试验收,
 通过后会登录悦动圈硬件开放平台
+
+传送门: 到ios版 https://github.com/ZoMinster/YDOpenHardware

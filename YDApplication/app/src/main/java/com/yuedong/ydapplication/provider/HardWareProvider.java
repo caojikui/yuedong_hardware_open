@@ -39,6 +39,7 @@ public class HardWareProvider extends ContentProvider {
     private static final int kTableScale = 7;
 
     private static final int kTableRealTimeStep = 8;
+    private static final int kTableUserTarget = 9;
 
     private static final String kTag = "open_hardware";
 
@@ -49,6 +50,7 @@ public class HardWareProvider extends ContentProvider {
         sMatcher.addURI(PlugConst.AUTOHORITY, PlugConst.kTableHeartRate, kTableHeartRate);
         sMatcher.addURI(PlugConst.AUTOHORITY, PlugConst.kTableIntelligentScale, kTableScale);
         sMatcher.addURI(PlugConst.AUTOHORITY, PlugConst.kTableRealTimeStep, kTableRealTimeStep);
+        sMatcher.addURI(PlugConst.AUTOHORITY, PlugConst.kTableUserSportTarget, kTableUserTarget);
     }
     @Override
     public boolean onCreate() {
@@ -98,10 +100,19 @@ public class HardWareProvider extends ContentProvider {
                 }
                 cursor = getRealTimeStepData(selectionArgs[0]);
                 break;
+            case kTableUserTarget:
+                return getUserTarget();
             default:
                 throw new IllegalArgumentException("Unknown URI"+uri);
         }
         cursor.setNotificationUri(getContext().getContentResolver(), uri);
+        return cursor;
+    }
+
+    private static String[] kUserTargetCols = new String[]{PlugConst.kColStepCount};
+    private Cursor getUserTarget() {
+        MatrixCursor cursor = new MatrixCursor(kUserTargetCols);
+        cursor.addRow(new Object[]{3000});
         return cursor;
     }
 

@@ -47,6 +47,9 @@ public class PlugConst {
     //    实时步数 使用update, 即设置当天实时, query 查讯最后一次设置的, 如果不是同一天或没有数据 则cursor没有数据返回 即cursor.getCount() = 0
     public static final String kTableRealTimeStep = "real_time_step_table";
 
+    //    用户今日目标获取 现在只有步数
+    public static final String kTableUserSportTarget = "user_sport_target";
+
     //    每个table对应cols
     public static final String kColId = "_id";       //
     public static final String kColDeviceIdentify = "device_identify";  //应用分配的设备标志 string

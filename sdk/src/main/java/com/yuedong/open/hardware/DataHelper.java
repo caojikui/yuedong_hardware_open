@@ -23,6 +23,7 @@ public class DataHelper {
     public static final Uri kUriHeartRate = Uri.parse("content://" + PlugConst.AUTOHORITY + "/"+ PlugConst.kTableHeartRate);
     public static final Uri kUriIntelligentScale = Uri.parse("content://" + PlugConst.AUTOHORITY + "/"+ PlugConst.kTableIntelligentScale);
     public static final Uri kUriRealTimeStep = Uri.parse("content://" + PlugConst.AUTOHORITY + "/"+ PlugConst.kTableRealTimeStep);
+    public static final Uri kUriDayTarget = Uri.parse("content://" + PlugConst.AUTOHORITY + "/"+ PlugConst.kTableUserSportTarget);
 
     private static DataHelper sInstance;
 
@@ -185,5 +186,19 @@ public class DataHelper {
         stepCountInfo.calorie = cursor.getInt(cursor.getColumnIndex(PlugConst.kColCalorie));
         cursor.close();
         return stepCountInfo;
+    }
+
+    public int getTodayStepTarget(String deviceIdentify) {
+        ContentResolver resolver = context.getContentResolver();
+        Cursor cursor = resolver.query(kUriDayTarget, null, kSelectionDeviceIdentify, new String[]{deviceIdentify}, null);
+        if(cursor == null) {
+            return 0;
+        }
+        int stepTarget = 0;
+        if(cursor.moveToFirst()) {
+            stepTarget = cursor.getInt(0);
+        }
+        cursor.close();
+        return stepTarget;
     }
 }

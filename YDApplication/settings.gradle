@@ -1,2 +1,3 @@
 include ':app', ':sdk', ':support'
 project(':sdk').projectDir = new File('../sdk')
+project(':support').projectDir = new File('../support')

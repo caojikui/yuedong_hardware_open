@@ -80,19 +80,21 @@ public class YDActivity extends Activity implements View.OnClickListener {
 
     private static final int kReqScanCode = 27;
     private void openActivityScan() {
-        Intent intent = new Intent(this, ActivityScanCode.class);
+        Intent intent = new Intent();
+        intent.setClassName(PlugConst.kPlugServicePkg, "com.yuedong.yuebase.ui.ActivityScanCode");
         startActivityForResult(intent, kReqScanCode);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == kReqScanCode) {
             if(resultCode == RESULT_OK) {
-                String code = data.getStringExtra(Intents.Scan.RESULT);
-                String format = data.getStringExtra(Intents.Scan.RESULT_FORMAT);
+                String code = data.getStringExtra("SCAN_RESULT");
+                String format = data.getStringExtra("SCAN_RESULT_FORMAT");
                 Toast.makeText(this, "format:" + format + ", code:" + code, Toast.LENGTH_LONG).show();
             }
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
         }
     }
 

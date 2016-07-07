@@ -13,6 +13,9 @@ public abstract class AccountInfo {
 
     private static AccountInfo sInstance;
     public static AccountInfo instance() {
+        if(sInstance == null) {
+            sInstance = new AccountInfoImp();
+        }
         return sInstance;
     }
 

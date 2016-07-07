@@ -13,17 +13,16 @@ public abstract class NetWork {
         kHttpPatch,
         kHttpDelete
     }
-    public abstract NetCall asyncDo(HttpMethod method, Map<String, String> params, NetWorkCallback callback);
+    public abstract NetCall asyncDo(HttpMethod method, String url, Map<String, String> params, Map<String, String> headers, NetWorkCallback callback);
+    public NetCall asyncDo(HttpMethod method, String url, Map<String, String> params,  NetWorkCallback callback) {
+        return asyncDo(method, url, params, null, callback);
+    }
 
     private static NetWork sInstance;
     public static NetWork netWork() {
-        return sInstance;
-    }
-
-    public static void setInstance(NetWork instance) {
-        if(instance == null) {
-            return;
+        if(sInstance == null) {
+            sInstance = new NetWorkImp();
         }
-        sInstance = instance;
+        return sInstance;
     }
 }

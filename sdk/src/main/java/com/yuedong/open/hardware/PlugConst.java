@@ -101,4 +101,6 @@ public class PlugConst {
     public static final Uri SLEEP_URI = Uri.parse("content://" + AUTOHORITY + "/"+ kTableSleep);
     public static final Uri HEART_RATE_URI = Uri.parse("content://" + AUTOHORITY + "/"+ kTableHeartRate);
     public static final Uri INTELLIGENT_SCALE_URI = Uri.parse("content://" + AUTOHORITY + "/"+ kTableIntelligentScale);
+
+    public static final int kTestUid = 2267576;
 }

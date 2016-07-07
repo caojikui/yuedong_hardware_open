@@ -46,5 +46,11 @@
         android:background="@android:color/holo_green_dark"
         android:layout_marginTop="5dp"/>
 
-
+    <Button
+        android:id="@+id/bn_scan_code"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="扫描二维码"
+        android:background="@android:color/holo_green_dark"
+        android:layout_marginTop="5dp"/>
 </LinearLayout>

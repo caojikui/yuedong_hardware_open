@@ -10,6 +10,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name="com.yuedong.ydapplication.YDActivity"
+            android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,7 +28,12 @@
 
         <activity
             android:name="com.yuedong.yue.open.hardware.ui.ActivityHardwareHome"
+            android:screenOrientation="portrait"
             android:exported="true" />
+
+        <activity android:name="com.yuedong.yuebase.ui.ActivityScanCode"
+            android:screenOrientation="portrait"
+            android:exported="true"/>
     </application>
 
 </manifest>

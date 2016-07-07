@@ -8,8 +8,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.zxing.client.android.Intents;
 import com.yuedong.sport.R;
 import com.yuedong.open.hardware.PlugConst;
+import com.yuedong.yuebase.ui.ActivityScanCode;
 
 import java.net.URISyntaxException;
 
@@ -46,6 +48,7 @@ public class YDActivity extends Activity implements View.OnClickListener {
         btnCloseBlueTooth.setOnClickListener(this);
         findViewById(R.id.btn_blue_opend).setOnClickListener(this);
         findViewById(R.id.btn_blue_closed).setOnClickListener(this);
+        findViewById(R.id.bn_scan_code).setOnClickListener(this);
     }
 
     @Override
@@ -68,6 +71,28 @@ public class YDActivity extends Activity implements View.OnClickListener {
                 break;
             case R.id.btn_blue_closed:
                 sendBluetoothStatusChanged(false);
+                break;
+            case R.id.bn_scan_code:
+                openActivityScan();
+                break;
+        }
+    }
+
+    private static final int kReqScanCode = 27;
+    private void openActivityScan() {
+        Intent intent = new Intent(this, ActivityScanCode.class);
+        startActivityForResult(intent, kReqScanCode);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == kReqScanCode) {
+            if(resultCode == RESULT_OK) {
+                String code = data.getStringExtra(Intents.Scan.RESULT);
+                String format = data.getStringExtra(Intents.Scan.RESULT_FORMAT);
+                Toast.makeText(this, "format:" + format + ", code:" + code, Toast.LENGTH_LONG).show();
+            }
         }
     }
 

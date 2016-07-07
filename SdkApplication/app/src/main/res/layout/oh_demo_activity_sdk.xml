@@ -61,4 +61,12 @@
         android:background="@android:color/holo_green_dark"
         android:layout_height="wrap_content" />
 
+    <Button
+        android:id="@+id/bn_jump_to_plug_demo"
+        android:layout_width="match_parent"
+        android:text="跳转悦动圈插件列表"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/holo_green_dark"
+        android:layout_height="wrap_content" />
+
 </LinearLayout>

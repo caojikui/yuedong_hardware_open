@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.yuedong.open.hardware.app.R;
+import com.yuedong.sport.R;
 import com.yuedong.open.hardware.PlugConst;
 
 import java.net.URISyntaxException;

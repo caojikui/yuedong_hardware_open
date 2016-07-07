@@ -33,7 +33,7 @@ public class PlugConst {
     //    执行绑定操作等对应的Service
     public static final String kPlugServiceName = "com.yuedong.yue.open.hardware.YDHardwarePlugService";
     //  TODO 只有测试demo使用该值
-    public static final String kPlugServicePkg = "com.yuedong.open.hardware";
+    public static final String kPlugServicePkg = "com.yuedong.sport";
 
     //    contentProvider对应数据表
 //    手环计步数据

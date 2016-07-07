@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.yuedong.open.hardware.app">
+    package="com.yuedong.sport">
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -17,11 +18,16 @@
         </activity>
 
         <provider
-            android:authorities="com.yuedong.sport.yue.open.hardware"
             android:name="com.yuedong.ydapplication.provider.HardWareProvider"
-            android:exported="true"/>
-        <service android:name="com.yuedong.yue.open.hardware.YDHardwarePlugService"
-            android:exported="true"/>
+            android:authorities="com.yuedong.sport.yue.open.hardware"
+            android:exported="true" />
+        <service
+            android:name="com.yuedong.yue.open.hardware.YDHardwarePlugService"
+            android:exported="true" />
+
+        <activity
+            android:name="com.yuedong.yue.open.hardware.ui.ActivityHardwareHome"
+            android:exported="true" />
     </application>
 
 </manifest>

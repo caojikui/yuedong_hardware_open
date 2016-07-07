@@ -102,6 +102,7 @@ public class SDkActivity extends Activity implements View.OnClickListener {
             }
         });
         navigationBar.setLeftBnContent(NavigationBar.backBn(this));
+        findViewById(R.id.bn_jump_to_plug_demo).setOnClickListener(this);
     }
 
     private void bindService() {
@@ -207,6 +208,21 @@ public class SDkActivity extends Activity implements View.OnClickListener {
             case R.id.oh_demo_bn_user_info:
                 readUserInfo();
                 break;
+            case R.id.bn_jump_to_plug_demo:
+                tryJumpYDPlugActivity();
+                break;
+        }
+    }
+
+    private void tryJumpYDPlugActivity() {
+        try {
+            Intent intent = new Intent();
+            intent.setClassName("com.yuedong.sport", "com.yuedong.yue.open.hardware.ui.ActivityHardwareHome");
+            intent.putExtra("plug_name", "demo");
+//            TODO 请添入正确插件包名 才能跳转
+            startActivity(intent);
+        } catch(Throwable t) {
+            Toast.makeText(this, "请安装新版悦动圈", Toast.LENGTH_SHORT).show();
         }
     }
 

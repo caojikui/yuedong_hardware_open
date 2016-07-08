@@ -17,6 +17,10 @@ import android.widget.Toast;
 
 import com.yuedong.open.hardware.DataHelper;
 import com.yuedong.open.hardware.PlugConst;
+import com.yuedong.open.hardware.support.auth.AccountInfo;
+import com.yuedong.open.hardware.support.net.NetWork;
+import com.yuedong.open.hardware.support.net.NetWorkCallback;
+import com.yuedong.open.hardware.support.net.Result;
 import com.yuedong.open.hardware.ui.NavigationBar;
 import com.yuedong.yue.open.hardware.YDHardwarePlugInterface;
 
@@ -103,6 +107,7 @@ public class SDkActivity extends Activity implements View.OnClickListener {
         });
         navigationBar.setLeftBnContent(NavigationBar.backBn(this));
         findViewById(R.id.bn_jump_to_plug_demo).setOnClickListener(this);
+        findViewById(R.id.bn_query_open_id).setOnClickListener(this);
     }
 
     private void bindService() {
@@ -211,7 +216,24 @@ public class SDkActivity extends Activity implements View.OnClickListener {
             case R.id.bn_jump_to_plug_demo:
                 tryJumpYDPlugActivity();
                 break;
+            case R.id.bn_query_open_id:
+                tryQueryOpenId();
+                break;
         }
+    }
+
+    private void tryQueryOpenId() {
+//        AccountInfo.instance().queryOpenId()
+        NetWork.netWork().asyncGet("http://www.51yund.com", null, new NetWorkCallback() {
+            @Override
+            public void onNetWorkFinished(Result result) {
+                if(result.ok) {
+                    Toast.makeText(SDkActivity.this, result.text(), Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(SDkActivity.this, result.msg, Toast.LENGTH_LONG).show();
+                }
+            }
+        });
     }
 
     private void tryJumpYDPlugActivity() {

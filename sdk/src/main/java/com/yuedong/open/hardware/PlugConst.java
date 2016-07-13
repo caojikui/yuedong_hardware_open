@@ -30,6 +30,11 @@ public class PlugConst {
     //    蓝牙状态改变时 intent中的另一个key 对应一个boolean 表示蓝牙是否可用
     public static final String kBluetoothStatus = "bluetooth_status";   //对应 boolean
 
+    public static final String kActionPhoneNewCallIn = "new_call";
+    public static final String kActionPhoneNewSMS = "new_sms";
+    public static final String kActionNewNotification = "new_notification";
+    public static final String kKeyNotificationPkgName = "package_name";
+
     //    执行绑定操作等对应的Service
     public static final String kPlugServiceName = "com.yuedong.yue.open.hardware.YDHardwarePlugService";
     //  TODO 只有测试demo使用该值

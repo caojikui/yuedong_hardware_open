@@ -34,6 +34,7 @@ public class PlugConst {
     public static final String kActionPhoneNewSMS = "new_sms";
     public static final String kActionNewNotification = "new_notification";
     public static final String kKeyNotificationPkgName = "package_name";
+    public static final String kKeyExtras = "extras";
 
     //    执行绑定操作等对应的Service
     public static final String kPlugServiceName = "com.yuedong.yue.open.hardware.YDHardwarePlugService";

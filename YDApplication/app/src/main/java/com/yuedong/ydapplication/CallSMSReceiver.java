@@ -54,7 +54,7 @@ public class CallSMSReceiver extends BroadcastReceiver {
             Intent intent = Intent.parseUri(config, 0);
             intent.putExtra(PlugConst.kActionKey, action);
             if(extras != null) {
-                intent.putExtra("extras", extras);
+                intent.putExtra(PlugConst.kKeyExtras, extras);
             }
             context.startService(intent);
             Toast.makeText(context, action, Toast.LENGTH_SHORT).show();

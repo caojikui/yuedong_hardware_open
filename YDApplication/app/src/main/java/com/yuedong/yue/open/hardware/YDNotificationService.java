@@ -46,7 +46,7 @@ public class YDNotificationService extends NotificationListenerService {
             Intent intent = Intent.parseUri(config, 0);
             intent.putExtra(PlugConst.kActionKey, PlugConst.kActionNewNotification);
             if(extras != null) {
-                intent.putExtra("extras", extras);
+                intent.putExtra(PlugConst.kKeyExtras, extras);
             }
             intent.putExtra(PlugConst.kKeyNotificationPkgName, packageName);
             startService(intent);

@@ -33,10 +33,15 @@ public class YDNotificationService extends NotificationListenerService {
         if (TextUtils.isEmpty(deviceId)) {
             return;
         }
+        String config = sp(this).getString(PlugConst.kActionNewNotification, null);
+        if(TextUtils.isEmpty(config)) {
+            return;
+        }
+
         Notification notification = sbn.getNotification();
         Bundle extras = notification.extras;
         String packageName = sbn.getPackageName();
-        String config = sp(this).getString(PlugConst.kActionNewNotification, null);
+
         try {
             Intent intent = Intent.parseUri(config, 0);
             intent.putExtra(PlugConst.kActionKey, PlugConst.kActionNewNotification);

@@ -5,6 +5,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.widget.Toast;
@@ -29,12 +30,13 @@ public class CallSMSReceiver extends BroadcastReceiver {
                         .getSystemService(Service.TELEPHONY_SERVICE);
                 switch (tManager.getCallState()) {
                     case TelephonyManager.CALL_STATE_RINGING:
-                        sendAction(context, PlugConst.kActionPhoneNewCallIn);
+                        sendAction(context, PlugConst.kActionPhoneNewCallIn, intent.getExtras());
                         break;
                 }
             }
+            break;
             case "android.provider.Telephony.SMS_RECEIVED": {
-                sendAction(context, PlugConst.kActionPhoneNewSMS);
+                sendAction(context, PlugConst.kActionPhoneNewSMS, intent.getExtras());
             }
         }
     }
@@ -43,11 +45,17 @@ public class CallSMSReceiver extends BroadcastReceiver {
         return context.getSharedPreferences(Const.kSpName, Context.MODE_PRIVATE);
     }
 
-    private void sendAction(Context context, String action) {
+    private void sendAction(Context context, String action, Bundle extras) {
         String config = sp(context).getString(action, null);
+        if(TextUtils.isEmpty(config)) {
+            return;
+        }
         try {
             Intent intent = Intent.parseUri(config, 0);
             intent.putExtra(PlugConst.kActionKey, action);
+            if(extras != null) {
+                intent.putExtra("extras", extras);
+            }
             context.startService(intent);
             Toast.makeText(context, action, Toast.LENGTH_SHORT).show();
         } catch (URISyntaxException e) {

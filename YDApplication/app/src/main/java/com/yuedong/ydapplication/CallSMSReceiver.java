@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.telephony.SmsMessage;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.widget.Toast;
@@ -36,13 +37,29 @@ public class CallSMSReceiver extends BroadcastReceiver {
             }
             break;
             case "android.provider.Telephony.SMS_RECEIVED": {
-                sendAction(context, PlugConst.kActionPhoneNewSMS, intent.getExtras());
+                onNewSms(context, intent);
             }
         }
     }
 
     private SharedPreferences sp(Context context) {
         return context.getSharedPreferences(Const.kSpName, Context.MODE_PRIVATE);
+    }
+
+    private void onNewSms(Context context, Intent intent) {
+        Bundle bundle = intent.getExtras();
+        Object messages[] = (Object[]) bundle.get("pdus");
+        if (messages!=null && messages.length>0) {
+            SmsMessage smsMessage[] = new SmsMessage[messages.length];
+            for (int n = 0; n < smsMessage.length; n++) {
+                smsMessage[n] = SmsMessage.createFromPdu((byte[]) messages[n]);
+            }
+            for (SmsMessage message : smsMessage) {
+                String content = message.getMessageBody();//得到短信内容
+                String sender = message.getOriginatingAddress();//得到发件人号码
+            }
+            sendAction(context, PlugConst.kActionPhoneNewSMS, intent.getExtras());
+        }
     }
 
     private void sendAction(Context context, String action, Bundle extras) {

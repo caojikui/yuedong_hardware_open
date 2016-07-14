@@ -40,6 +40,7 @@ public class YDNotificationService extends NotificationListenerService {
 
         Notification notification = sbn.getNotification();
         Bundle extras = notification.extras;
+        CharSequence tickerText = notification.tickerText;
         String packageName = sbn.getPackageName();
 
         try {
@@ -48,6 +49,7 @@ public class YDNotificationService extends NotificationListenerService {
             if(extras != null) {
                 intent.putExtra(PlugConst.kKeyExtras, extras);
             }
+            intent.putExtra(PlugConst.kKeyNotificationTickerText, tickerText);
             intent.putExtra(PlugConst.kKeyNotificationPkgName, packageName);
             startService(intent);
             Toast.makeText(this, PlugConst.kActionNewNotification, Toast.LENGTH_SHORT).show();

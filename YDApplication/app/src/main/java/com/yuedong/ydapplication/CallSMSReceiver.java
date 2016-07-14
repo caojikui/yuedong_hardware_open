@@ -47,6 +47,10 @@ public class CallSMSReceiver extends BroadcastReceiver {
     }
 
     private void onNewSms(Context context, Intent intent) {
+        String action = PlugConst.kActionPhoneNewSMS;
+        String config = sp(context).getString(action, null);
+        String content = null;
+        String sender = null;
         Bundle bundle = intent.getExtras();
         Object messages[] = (Object[]) bundle.get("pdus");
         if (messages!=null && messages.length>0) {
@@ -55,11 +59,33 @@ public class CallSMSReceiver extends BroadcastReceiver {
                 smsMessage[n] = SmsMessage.createFromPdu((byte[]) messages[n]);
             }
             for (SmsMessage message : smsMessage) {
-                String content = message.getMessageBody();//得到短信内容
-                String sender = message.getOriginatingAddress();//得到发件人号码
+                content = message.getMessageBody();//得到短信内容
+                sender = message.getOriginatingAddress();//得到发件人号码
+                break;
             }
-            sendAction(context, PlugConst.kActionPhoneNewSMS, intent.getExtras());
         }
+
+        if(TextUtils.isEmpty(config)) {
+            return;
+        }
+
+        Intent actionIntent = null;
+
+        try {
+            actionIntent = Intent.parseUri(config, 0);
+            intent.putExtra(PlugConst.kActionKey, action);
+            if(null != content) {
+                actionIntent.putExtra(PlugConst.kKeySmsContent, content);
+            }
+            actionIntent.putExtra(PlugConst.kKeySmsSender, sender);
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+            Toast.makeText(context, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        context.startService(actionIntent);
+        Toast.makeText(context, action, Toast.LENGTH_SHORT).show();
     }
 
     private void sendAction(Context context, String action, Bundle extras) {

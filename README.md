@@ -76,6 +76,44 @@ SDK_APPLICATION_PACKAGE_NAME
 SDK_APPLICATION_SDkActivity_NAME  
 两个值对应到自己的包名及对应插件入口Activity名字
 
+## Action说明
+注册了设备之后 就可以注册需要用到的Action,当对应Action产生的时候悦动圈会以此分发Action  
+同时为了省电及统一管理, 新的短信电话通知也有悦动圈分发给插件
+支持的Action如下  
+
+    public static final String kActionWakeUp = "wake_up";
+    //    应用会定时发送该action 保持插件service长时间存活
+    public static final String kActionKeepAlive = "keep_alive";
+    //    应用会在蓝牙设备状态发生变化后广播该Action
+    public static final String kActionBluetoothStatusChanged = "bluetooth_status_changed";
+    //    应用请求插件暂时释放蓝牙资源
+    public static final String kActionReleaseBluetooth = "release_bluetooth";
+    //    蓝牙状态改变时 intent中的另一个key 对应一个boolean 表示蓝牙是否可用
+    
+    public static final String kActionPhoneNewCallIn = "new_call";
+    public static final String kActionPhoneNewSMS = "new_sms";
+    public static final String kActionNewNotification = "new_notification";
+    
+kActionWakeUp 在应用启动主界面的时候发送  
+kActionKeepAlive 悦动圈会定时发送  
+kActionBluetoothStatusChanged  蓝牙状态发生改变
+kActionReleaseBluetooth  要求插件释放蓝牙  
+kActionPhoneNewCallIn 新的电话  
+kActionPhoneNewSMS 新短信  
+kActionNewNotification 新的notification    
+	
+	public static final String kBluetoothStatus = "bluetooth_status";
+	// 对应蓝牙状态 boolean值
+	public static final String kKeyNotificationPkgName = "package_name";
+	// 对应notification的包名
+    public static final String kKeyExtras = "extras";
+    // notification 中的 ticker_text
+    public static final String kKeyNotificationTickerText = "ticker_text";
+    // 短信内容
+    public static final String kKeySmsContent = "content";
+    // 短信发送者
+    public static final String kKeySmsSender = "sender";
+
 ## support库的使用
 因为悦动圈内已经包含了okhttp,Fresco等库,同时插件中也存在需要使用网络操作与图片使用的场景,所以封装出support库,提供给插件直接使用Fresco,以及一个很简单的对网络操作的封装库  
 Fresco 可以直接使用(不能在xml中使用attr)

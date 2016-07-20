@@ -224,7 +224,7 @@ AccountInfo 提供了一些关于帐户的部分信息
 	private static final int kReqScanCode = 27;
     private void openActivityScan() {
         Intent intent = new Intent();
-        intent.setClassName(PlugConst.kPlugServicePkg, "com.yuedong.yuebase.ui.ActivityScanCode");
+        intent.setClassName(PlugConst.kPlugServicePkg, "com.yuedong.yuebase.ui.code.ActivityScanCode");
         startActivityForResult(intent, kReqScanCode);
     }
 

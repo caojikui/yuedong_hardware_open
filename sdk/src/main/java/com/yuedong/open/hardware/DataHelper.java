@@ -40,7 +40,7 @@ public class DataHelper {
         return sInstance;
     }
 
-    public void writeStepData(String deviceIdentify, int stepCount, float disM, int calorie, long startTSec, long endTSec) {
+    public boolean writeStepData(String deviceIdentify, int stepCount, float disM, int calorie, long startTSec, long endTSec) {
         ContentResolver resolver = context.getContentResolver();
         ContentValues values = new ContentValues();
         values.put(PlugConst.kColDeviceIdentify, deviceIdentify);
@@ -49,30 +49,29 @@ public class DataHelper {
         values.put(PlugConst.kColEndTSec, endTSec);
         values.put(PlugConst.kColDistanceM, disM);
         values.put(PlugConst.kColCalorie, calorie);
-        resolver.insert(kUriStep, values);
+        return null != resolver.insert(kUriStep, values);
     }
 
-    public void writeSleepData(String deviceIdentify, int sleepSection, long startTSec, long endTSec) {
+    public boolean writeSleepData(String deviceIdentify, int sleepSection, long startTSec, long endTSec) {
         ContentResolver resolver = context.getContentResolver();
         ContentValues values = new ContentValues();
         values.put(PlugConst.kColDeviceIdentify, deviceIdentify);
         values.put(PlugConst.kColSleepSection, sleepSection);
         values.put(PlugConst.kColStartTSec, startTSec);
         values.put(PlugConst.kColEndTSec, endTSec);
-        resolver.insert(kUriSleep, values);
+        return null != resolver.insert(kUriSleep, values);
     }
 
-    public void writeHeartRateData(String deviceIdentify, int heartRate, long startTSec, long endTSec) {
+    public boolean writeHeartRateData(String deviceIdentify, int heartRate, long tsSec) {
         ContentResolver resolver = context.getContentResolver();
         ContentValues values = new ContentValues();
         values.put(PlugConst.kColDeviceIdentify, deviceIdentify);
         values.put(PlugConst.kColHeartRate, heartRate);
-        values.put(PlugConst.kColStartTSec, startTSec);
-        values.put(PlugConst.kColEndTSec, endTSec);
-        resolver.insert(kUriHeartRate, values);
+        values.put(PlugConst.kColTimeSec, tsSec);
+        return null != resolver.insert(kUriHeartRate, values);
     }
 
-    public void writeIntelligentScaleData(String deviceIdentify, long time_sec, float weight_g, float bft, float bmp, float bmi, float bmr, float bwp, JSONObject extra) {
+    public boolean writeIntelligentScaleData(String deviceIdentify, long time_sec, float weight_g, float bft, float bmp, float bmi, float bmr, float bwp, JSONObject extra) {
         ContentResolver resolver = context.getContentResolver();
         ContentValues values = new ContentValues();
         values.put(PlugConst.kColDeviceIdentify, deviceIdentify);
@@ -86,7 +85,7 @@ public class DataHelper {
         if (null != extra) {
             values.put(PlugConst.kColExtra, extra.toString());
         }
-        resolver.insert(kUriIntelligentScale, values);
+        return resolver.insert(kUriIntelligentScale, values) != null;
     }
 
     private static final long kDayMillis = 86400000;

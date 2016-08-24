@@ -265,3 +265,8 @@ AccountInfo 提供了一些关于帐户的部分信息
 
 ## 传送门 ios版SDK
 <https://github.com/ZoMinster/YDOpenHardware>
+
+## 测试方法
+拿到测试包之后，把自己插件按照要求打包，然后放于sd卡yuedong_test_plug目录（自己创建下）下，命名为test_plug.so  
+具体位置 new File(Environment.getExternalStorageDirectory(), "yuedong_test_plug/test_plug.so");  
+启动安装的悦动圈，登录之后，选择我，点击 智能硬件，然后 选择 测试，进入插件界面  

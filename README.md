@@ -195,11 +195,12 @@ AccountInfo 提供了一些关于帐户的部分信息
         //compile 'com.android.support:recyclerview-v7:22.1.1'
         //compile ‘com.android.support:gridlayout-v7:22.1.1'
         //compile project(‘:sdk')
-        //compile project(':support')
+        compile project(':support')
 	}
 
 可以代码混淆，不能做签名,发布的时候会使用悦动的证书做签名保证程序安全  
 使用 gradle assembleUnsigned 命令打包没有签名的包, 代码混淆等 可以自行配置
+其中main.jar下载链接http://7xjqqe.com1.z0.glb.clouddn.com/main.jar
 
 ## 其它支持
 ###第三方应用跳转到插件界面

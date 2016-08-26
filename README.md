@@ -114,6 +114,23 @@ kActionNewNotification 新的notification
     // 短信发送者
     public static final String kKeySmsSender = "sender";
 
+###来电Action格式
+    "action":"new_call",	PlugConst.kActionKey:PlugConst.kActionPhoneNewCallIn
+    "extras": Bundle类型数据，具体内容为 android.intent.action.PHONE_STATE广播对应intent中的extras,
+    	主要key有TelephonyManager.EXTRA_INCOMING_NUMBER,TelephonyManager.EXTRA_STATE 等
+    	
+###短信Action格式
+     "action":"new_sms", 	PlugConst.kActionKey:PlugConst.kActionPhoneNewSMS
+     "content":"短信内容",	PlugConst.kKeySmsContent:
+     "sender":"发送者"		PlugConst.kKeySmsSender:
+     "extras": Bundle类型数据，短信其他内容
+     
+###notifation格式
+      "action":"new_notification", 	PlugConst.kActionKey:PlugConst.kActionNewNotification
+      "package_name":"pkg",		PlugConst.kKeyNotificationPkgName
+      "ticker_text":"",			PlugConst.kKeyNotificationTickerText
+      "extras":Bundle类型		PlugConst.kKeyExtras 具体内容格式参照Android开发文档 Notification.extras
+
 ## support库的使用
 因为悦动圈内已经包含了okhttp,Fresco等库,同时插件中也存在需要使用网络操作与图片使用的场景,所以封装出support库,提供给插件直接使用Fresco,以及一个很简单的对网络操作的封装库  
 Fresco 可以直接使用(不能在xml中使用attr)

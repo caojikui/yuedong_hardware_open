@@ -206,13 +206,13 @@ AccountInfo 提供了一些关于帐户的部分信息
 
     dependencies {
         compile fileTree(dir: 'libs', include: ['*.jar'])
+        compile project(‘:sdk')
         provided files("main.jar")  //添加这个jar包,里面包涵如下五个包内容,不需要自己单独依赖如下包
         //compile 'com.android.support:appcompat-v7:22.1.1'
         //compile 'com.android.support:support-v4:22.1.1'
         //compile 'com.android.support:recyclerview-v7:22.1.1'
         //compile ‘com.android.support:gridlayout-v7:22.1.1'
-        //compile project(‘:sdk')
-        compile project(':support')
+        //compile project(':support')
 	}
 
 可以代码混淆，不能做签名,发布的时候会使用悦动的证书做签名保证程序安全  

@@ -51,6 +51,8 @@ interface YDHardwarePlugInterface{
     kColBasalMetabolismRate,kColBodyWaterPercentage, kColExtra
     </code></pre>
 支持插入及查讯,不过要求查讯及插入都需要明确指定device_identify,如果没有指定,或者使用错误的device_identify,都是会执行失败的
+## 计步分段数据要求
+为了悦动圈对各个设备（不同硬件及手机）计步数据的合并去重，我们要求智能硬件上报来的数据按照15分钟一段，每天96段的标准进行数据分段
 ## 插件具体应该执行一个什么样的流程呢?
 ### 第一次开启插件
 * 跳转到插件界面, 同时会传递当前用户的user_id, 插件发现没有任何硬件绑定, 这时候就是应该引导用户绑定硬件

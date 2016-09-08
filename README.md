@@ -133,6 +133,25 @@ kActionNewNotification 新的notification
       "ticker_text":"",			PlugConst.kKeyNotificationTickerText
       "extras":Bundle类型		PlugConst.kKeyExtras 具体内容格式参照Android开发文档 Notification.extras
 
+###注册来电通知和短信通知的时候由于Android6.0授权机制 需要检测用户是否授权，用户打开来电通知的时候插件需要进行检测，如果没有授权需要请求授权，相关代码如下
+    private void checkNewCallPermission() {
+        if (Build.VERSION.SDK_INT >= 23) {
+            int checkCallPhonePermission = ContextCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE);
+            if (checkCallPhonePermission != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.READ_PHONE_STATE}, requestCode);
+            }
+        }
+    }
+
+    private void checkSMSPermission() {
+        if (Build.VERSION.SDK_INT >= 23) {
+            int checkCallPhonePermission = ContextCompat.checkSelfPermission(this, Manifest.permission.RECEIVE_SMS);
+            if (checkCallPhonePermission != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.RECEIVE_SMS}, requestCode);
+            }
+        }
+    }
+
 ## support库的使用
 因为悦动圈内已经包含了okhttp,Fresco等库,同时插件中也存在需要使用网络操作与图片使用的场景,所以封装出support库,提供给插件直接使用Fresco,以及一个很简单的对网络操作的封装库  
 Fresco 可以直接使用(不能在xml中使用attr)

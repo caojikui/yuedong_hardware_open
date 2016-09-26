@@ -10,6 +10,9 @@ Android Studio
 悦动圈提供插件列表,允许用户按需下载安装插件,以及直接跳转到购买链接 
 悦动圈提供入口,可以跳转到插件的页面, 执行插件自己的逻辑  
 悦动圈提供硬件数据的保存读取以及同步的支持
+## ui设计指导规范
+文件下载链接：<http://7xjqqe.com1.z0.glb.clouddn.com/%E5%AF%BC%E8%88%AA%E6%A0%8F%E8%AE%BE%E8%AE%A1%E6%A0%87%E5%87%86.zip>
+只要求在出现navigation bar的时候ui按照此规范设计开发以和悦动圈ui风格保持一致，其他ui交互不做强制要求
 ## 概念说明
 device_id:硬件设备唯一标识,相同硬件device_id应该保持一致  
 user_id:用户唯一标识  

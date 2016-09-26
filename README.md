@@ -19,7 +19,7 @@ device_identify:悦动圈根据插件提供的device_id结合当前登录用户�
 <pre><code>
 package com.yuedong.yue.open.hardware;
 interface YDHardwarePlugInterface{
-//  绑定硬件设备后需要想用用注册
+//  绑定硬件设备后需要向悦动圈注册设备，之后使用分配的device_identify进行其他操作
     String registerDevice(String deviceId, String plugName);
 //  解除绑定设备后要注销
     void unRegisterDevice(String deviceIdentify, String plugName);

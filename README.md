@@ -1,6 +1,6 @@
 # 新版轻量sdk，用于嵌入第三方App
-链接 <https://github.com/yuedongtianxia/hardware_sdk_slim>
-基于轻量sdk，开发量更小，通过想悦动圈授权，sdk运动上报实现数据同步，建有优先使用
+链接 <https://github.com/yuedongtianxia/hardware_sdk_slim>  
+基于轻量sdk，开发量更小，通过向悦动圈授权，sdk运动上报实现数据同步，建有优先使用
 
 # 悦动圈 硬件开放平台SDK
 ## 请把该文档完整阅读之后再提问题,真的,请读读文档吧!

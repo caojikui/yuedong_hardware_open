@@ -144,7 +144,7 @@ public class DataHelper {
                 e.printStackTrace();
             }
         }
-
+        String dayBeforeYesterdayKey = String.valueOf(dayBegin - kDayMillis * 2);
         writeStepData(deviceIdentify, stepCount-oldStep, disM-oldDisM, calorie-oldCalorie, lastTSec, endTSec);
         JSONObject jsonObject = new JSONObject();
         try {
@@ -155,7 +155,7 @@ public class DataHelper {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        sp.edit().putString(key, jsonObject.toString()).commit();
+        sp.edit().putString(key, jsonObject.toString()).remove(dayBeforeYesterdayKey).commit();
     }
 
     public void setRealTimeStepCount(String deviceIdentify, int stepCount, float disM, int calorie) {

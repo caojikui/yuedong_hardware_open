@@ -56,6 +56,10 @@ interface YDHardwarePlugInterface{
     kColId,kColDeviceIdentify,kColTimeSec, kColWeightG,
     kColBodyFatPercentage, kColBodyMusclePercentage, kColBodyMassIndex
     kColBasalMetabolismRate,kColBodyWaterPercentage, kColExtra
+ 
+    //用户信息
+    kColUserInfoHeightCm, kColUserInfoGender, kColUserInfoBirthday
+    按需使用设置哪个更新哪个
     </code></pre>
 支持插入及查讯,不过要求查讯及插入都需要明确指定device_identify,如果没有指定,或者使用错误的device_identify,都是会执行失败的
 ## 计步分段数据要求

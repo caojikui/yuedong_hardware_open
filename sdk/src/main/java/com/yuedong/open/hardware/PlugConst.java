@@ -59,6 +59,9 @@ public class PlugConst {
     //    用户今日目标获取 现在只有步数
     public static final String kTableUserSportTarget = "user_sport_target";
 
+    //     用户信息
+    public static final String kTableUserInfo = "user_info";
+
     //    每个table对应cols
     public static final String kColId = "_id";       //
     public static final String kColDeviceIdentify = "device_identify";  //应用分配的设备标志 string
@@ -79,6 +82,9 @@ public class PlugConst {
     public static final String kColBodyMassIndex = "body_mass_index"; // float 0~100
     public static final String kColBasalMetabolismRate = "basal_metabolism_rate"; //float
     public static final String kColBodyWaterPercentage = "body_water_percentage"; //float
+    public static final String kColUserInfoHeightCm = "height_cm"; //int
+    public static final String kColUserInfoGender = "gender"; // 1 男性 0女性
+    public static final String kColUserInfoBirthday = "birthday"; // long 出生时间 单位秒
 
     /*
     计步
@@ -98,6 +104,9 @@ public class PlugConst {
     kColBodyFatPercentage, kColBodyMusclePercentage, kColBodyMassIndex
     kColBasalMetabolismRate,kColBodyWaterPercentage, kColExtra
 
+    用户信息
+    kColUserInfoHeightCm, kColUserInfoGender, kColUserInfoBirthday
+    按需使用设置哪个更新哪个
      */
 
     //    contentProvider相关

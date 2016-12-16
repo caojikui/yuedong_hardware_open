@@ -82,7 +82,7 @@ public class PlugConst {
     public static final String kColBodyMassIndex = "body_mass_index"; // float 0~100
     public static final String kColBasalMetabolismRate = "basal_metabolism_rate"; //float
     public static final String kColBodyWaterPercentage = "body_water_percentage"; //float
-    public static final String kColUserInfoHeightCm = "height"; //int cm
+    public static final String kColUserInfoHeightCm = "height_cm"; //int
     public static final String kColUserInfoGender = "gender"; // 1 男性 0女性
     public static final String kColUserInfoBirthday = "birthday"; // long 出生时间 单位秒
 

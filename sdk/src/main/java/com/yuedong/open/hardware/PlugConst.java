@@ -85,6 +85,7 @@ public class PlugConst {
     public static final String kColUserInfoHeightCm = "height_cm"; //int
     public static final String kColUserInfoGender = "gender"; // 1 男性 0女性
     public static final String kColUserInfoBirthday = "birthday"; // long 出生时间 单位秒
+    public static final String kColUserInfoWeightG = "weight_g";
 
     /*
     计步
@@ -105,7 +106,7 @@ public class PlugConst {
     kColBasalMetabolismRate,kColBodyWaterPercentage, kColExtra
 
     用户信息
-    kColUserInfoHeightCm, kColUserInfoGender, kColUserInfoBirthday
+    kColUserInfoHeightCm, kColUserInfoGender, kColUserInfoBirthday kColUserInfoWeightG
     按需使用设置哪个更新哪个
      */
 

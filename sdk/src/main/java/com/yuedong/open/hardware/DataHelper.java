@@ -120,6 +120,7 @@ public class DataHelper {
                 sum.calorie += cursor.getInt(indexCalorie);
             } while (cursor.moveToNext());
         }
+        cursor.close();
         return sum;
     }
 

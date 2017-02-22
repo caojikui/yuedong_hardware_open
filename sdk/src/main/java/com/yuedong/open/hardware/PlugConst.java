@@ -15,9 +15,25 @@ public class PlugConst {
     public static final String kKeyBirthday = "birthday"; //年龄 long 单位秒
     public static final String kKeyAvatarPath = "avatar_path";  //头像文件路径
     public static final String kKeyHeight = "height";   // int 身高cm
+    public static final String kKeyWeight = "weight_g";   // int 身高cm
 
     //    插件收到注册的Action intent中Action的key
     public static final String kActionKey = "action";   //对应String 如下
+
+//    开始运动
+    public static final String kActionStartSport = "sport_start";
+//    结束运动
+    public static final String kActionFinishSport = "sport_finish";
+//    运动数据更新
+    public static final String kActionSportDataUpdate = "sport_data_update";
+//    暂停跑步
+    public static final String kActionPauseSport = "sport_pause";
+//    继续跑步
+    public static final String kActionRestartSport = "sport_restart";
+
+    //  下面两个Action用于插件发送广播触发跑步暂停继续结束
+    public static final String kBroadCastActionPauseSport = "com.yuedong.sport_pause";
+    public static final String kBroadCastActionRestartSport = "com.yuedong.sport_restart";
 
     //    action 唤醒插件 应用会在启动或定时发送该action 插件收到该action后 从硬件读取数据
     public static final String kActionWakeUp = "wake_up";
@@ -29,6 +45,8 @@ public class PlugConst {
     public static final String kActionReleaseBluetooth = "release_bluetooth";
     //    蓝牙状态改变时 intent中的另一个key 对应一个boolean 表示蓝牙是否可用
     public static final String kBluetoothStatus = "bluetooth_status";   //对应 boolean
+
+//    public static final String kPlugServicePkg = "com.yuedong.open.hardware";
 
     public static final String kActionPhoneNewCallIn = "new_call";
     public static final String kActionPhoneNewSMS = "new_sms";
@@ -43,6 +61,11 @@ public class PlugConst {
     public static final String kPlugServiceName = "com.yuedong.yue.open.hardware.YDHardwarePlugService";
     //  TODO 只有测试demo使用该值
     public static final String kPlugServicePkg = "com.yuedong.sport";
+//    kActionStartSport，kActionFinishSport，kActionSportDataUpdate
+    public static final String kKeySportType = "sport_type";    //string 对应run/riding分别为跑步骑行
+    public static final String kKeySportDistanceM = "sport_distance"; //运动距离 float 米
+    public static final String kKeySportTimeOfDuration = "sport_time_of_duration"; //运动持续时间 long 单位s
+    public static final String kKeySportSpeed = "sport_speed"; //当前速度m/s
 
     //    contentProvider对应数据表
 //    手环计步数据
@@ -83,6 +106,7 @@ public class PlugConst {
     public static final String kColBasalMetabolismRate = "basal_metabolism_rate"; //float
     public static final String kColBodyWaterPercentage = "body_water_percentage"; //float
     public static final String kColUserInfoHeightCm = "height_cm"; //int
+
     public static final String kColUserInfoGender = "gender"; // 1 男性 0女性
     public static final String kColUserInfoBirthday = "birthday"; // long 出生时间 单位秒
     public static final String kColUserInfoWeightG = "weight_g";
@@ -107,6 +131,9 @@ public class PlugConst {
 
     用户信息
     kColUserInfoHeightCm, kColUserInfoGender, kColUserInfoBirthday kColUserInfoWeightG
+    用户运动目标
+    kColStepCount
+
     按需使用设置哪个更新哪个
      */
 

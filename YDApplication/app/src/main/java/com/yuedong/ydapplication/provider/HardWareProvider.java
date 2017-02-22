@@ -40,6 +40,8 @@ public class HardWareProvider extends ContentProvider {
 
     private static final int kTableRealTimeStep = 8;
     private static final int kTableUserTarget = 9;
+    private static final int kTableUserInfo = 10;
+    private static final int kTableWeather = 11;
 
     private static final String kTag = "open_hardware";
 
@@ -51,6 +53,8 @@ public class HardWareProvider extends ContentProvider {
         sMatcher.addURI(PlugConst.AUTOHORITY, PlugConst.kTableIntelligentScale, kTableScale);
         sMatcher.addURI(PlugConst.AUTOHORITY, PlugConst.kTableRealTimeStep, kTableRealTimeStep);
         sMatcher.addURI(PlugConst.AUTOHORITY, PlugConst.kTableUserSportTarget, kTableUserTarget);
+        sMatcher.addURI(PlugConst.AUTOHORITY, PlugConst.kTableUserInfo, kTableUserInfo);
+        sMatcher.addURI(PlugConst.AUTOHORITY, PlugConst.kTableWeather, kTableWeather);
     }
     @Override
     public boolean onCreate() {
@@ -102,10 +106,20 @@ public class HardWareProvider extends ContentProvider {
                 break;
             case kTableUserTarget:
                 return getUserTarget();
+            case kTableWeather:
+                return getWeatherCursor();
             default:
                 throw new IllegalArgumentException("Unknown URI"+uri);
         }
         cursor.setNotificationUri(getContext().getContentResolver(), uri);
+        return cursor;
+    }
+
+
+    private static String[] kWeatherCols = new String[]{PlugConst.kColWeather, PlugConst.kColTemperatureC, PlugConst.kColPM25};
+    private Cursor getWeatherCursor() {
+        MatrixCursor cursor = new MatrixCursor(kWeatherCols);
+        cursor.addRow(new Object[]{"雨", 25, 600});
         return cursor;
     }
 

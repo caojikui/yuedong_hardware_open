@@ -68,6 +68,8 @@ public class PlugConst {
     public static final String kKeySportSpeed = "sport_speed"; //当前速度m/s
 
     //    contentProvider对应数据表
+    //    天气
+    public static final String kTableWeather = "weather";
 //    手环计步数据
     public static final String kTableSteps = "step_calculation_table_name";
     //    睡眠质量
@@ -111,6 +113,10 @@ public class PlugConst {
     public static final String kColUserInfoBirthday = "birthday"; // long 出生时间 单位秒
     public static final String kColUserInfoWeightG = "weight_g";
 
+    public static final String kColWeather = "weather"; // string '晴','雨','阴','云','雪','雾','雷','沙'
+    public static final String kColTemperatureC = "temperature"; // 温度 摄氏度
+    public static final String kColPM25 = "pm25"; //pm2.5
+
     /*
     计步
     kColId,kColDeviceIdentify,kColStepCount,kColStartTSec,kColEndTSec,kColDistanceM, kColCalorie
@@ -147,6 +153,7 @@ public class PlugConst {
     public static final Uri SLEEP_URI = Uri.parse("content://" + AUTOHORITY + "/"+ kTableSleep);
     public static final Uri HEART_RATE_URI = Uri.parse("content://" + AUTOHORITY + "/"+ kTableHeartRate);
     public static final Uri INTELLIGENT_SCALE_URI = Uri.parse("content://" + AUTOHORITY + "/"+ kTableIntelligentScale);
+    public static final Uri URI_WEATHER = Uri.parse("content://" + AUTOHORITY + "/"+ kTableWeather);
 
     public static final int kTestUid = 2267576;
 }

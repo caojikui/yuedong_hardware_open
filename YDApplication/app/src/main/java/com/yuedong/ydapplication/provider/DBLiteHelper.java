@@ -38,8 +38,8 @@ public class DBLiteHelper extends SQLiteOpenHelper {
                 PlugConst.kColId + " integer primary key autoincrement not null," +
                 PlugConst.kColDeviceIdentify + " text not null," +
                 PlugConst.kColHeartRate + " integer not null," +
-                PlugConst.kColStartTSec + " integer not null," +
-                PlugConst.kColEndTSec + " integer not null);");
+//                PlugConst.kColStartTSec + " integer not null," +
+                PlugConst.kColTimeSec + " integer not null);");
 
         db.execSQL("create table " + PlugConst.kTableIntelligentScale + "(" +
                 PlugConst.kColId + " integer primary key autoincrement not null," +

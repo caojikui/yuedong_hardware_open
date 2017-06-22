@@ -73,7 +73,7 @@ public class CallSMSReceiver extends BroadcastReceiver {
 
         try {
             actionIntent = Intent.parseUri(config, 0);
-            intent.putExtra(PlugConst.kActionKey, action);
+            actionIntent.putExtra(PlugConst.kActionKey, action);
             if(null != content) {
                 actionIntent.putExtra(PlugConst.kKeySmsContent, content);
             }
